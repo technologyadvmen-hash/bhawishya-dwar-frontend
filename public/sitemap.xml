@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Core Homepage -->
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://savitramfoundation.com/bhawishya-dwar"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://savitramfoundation.com/bhawishya-dwar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://savitramfoundation.com/bhawishya-dwar"/>
+  </url>
+
+  <!-- Palm Reading Topical Clusters -->
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/palm-reading</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/palm-reading/life-line</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/palm-reading/heart-line</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/palm-reading/head-line</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/palm-reading/fate-line</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/palm-reading/sun-line</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/palm-reading/mercury-line</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Astrology Clusters -->
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/horoscope</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/zodiac-signs</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/birth-chart</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/love-compatibility</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Informational Pages -->
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/how-it-works</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/features</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/pricing</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Legal Documents -->
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://savitramfoundation.com/bhawishya-dwar/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>

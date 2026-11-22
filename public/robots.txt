@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /bhawishya-dwar
+Allow: /bhawishya-dwar/about
+Allow: /bhawishya-dwar/features
+Allow: /bhawishya-dwar/pricing
+Allow: /bhawishya-dwar/how-it-works
+Allow: /bhawishya-dwar/contact
+Allow: /bhawishya-dwar/privacy
+Allow: /bhawishya-dwar/terms
+Allow: /bhawishya-dwar/faq
+Allow: /bhawishya-dwar/palm-reading
+Allow: /bhawishya-dwar/horoscope
+Allow: /bhawishya-dwar/zodiac-signs
+Allow: /bhawishya-dwar/birth-chart
+Allow: /bhawishya-dwar/love-compatibility
+
+Disallow: /bhawishya-dwar/dashboard
+Disallow: /bhawishya-dwar/admin
+Disallow: /bhawishya-dwar/login
+Disallow: /bhawishya-dwar/register
+Disallow: /bhawishya-dwar/forgot-password
+Disallow: /bhawishya-dwar/reset-password
+
+Sitemap: https://savitramfoundation.com/bhawishya-dwar/sitemap.xml

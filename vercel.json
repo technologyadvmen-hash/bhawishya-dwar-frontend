@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/bhawishya-dwar/(.*)", "destination": "/index.html" },
+    { "source": "/bhawishya-dwar", "destination": "/index.html" }
+  ]
+}

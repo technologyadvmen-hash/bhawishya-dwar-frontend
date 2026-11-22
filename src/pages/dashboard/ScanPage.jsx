@@ -68,40 +68,24 @@ export default function ScanPage() {
     return () => { cancelled = true }
   }, [])
 
-  // Sync canvas size to actual video element size (not videoWidth/Height)
-  const syncCanvas = useCallback(() => {
-    const video = webcamRef.current?.video
-    const canvas = canvasRef.current
-    if (!video || !canvas) return
-    const rect = video.getBoundingClientRect()
-    canvas.style.width = rect.width + 'px'
-    canvas.style.height = rect.height + 'px'
-    canvas.width = video.videoWidth || rect.width
-    canvas.height = video.videoHeight || rect.height
-  }, [])
-
-  // Draw landmarks — account for mirroring on front camera
+  // Draw landmarks directly on video dimensions
   const drawLandmarks = useCallback((landmarks) => {
     const canvas = canvasRef.current
     const video = webcamRef.current?.video
-    if (!canvas || !video) return
-    syncCanvas()
+    if (!canvas || !video || !video.videoWidth) return
+
+    // Always match canvas internal resolution to video
+    canvas.width = video.videoWidth
+    canvas.height = video.videoHeight
+
     const ctx = canvas.getContext('2d')
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     if (!landmarks?.length) return
 
     const pts = landmarks[0]
-    const isMirrored = cameraFacing === 'user'
-
-    // Mirror transform for front camera
-    ctx.save()
-    if (isMirrored) {
-      ctx.translate(canvas.width, 0)
-      ctx.scale(-1, 1)
-    }
 
     ctx.strokeStyle = 'rgba(217,164,65,0.9)'
-    ctx.lineWidth = Math.max(2, canvas.width / 150)
+    ctx.lineWidth = Math.max(3, canvas.width / 120)
     PALM_CONNECTIONS.forEach(([a, b]) => {
       ctx.beginPath()
       ctx.moveTo(pts[a].x * canvas.width, pts[a].y * canvas.height)
@@ -109,7 +93,7 @@ export default function ScanPage() {
       ctx.stroke()
     })
 
-    const dotR = Math.max(4, canvas.width / 80)
+    const dotR = Math.max(5, canvas.width / 70)
     pts.forEach((pt) => {
       ctx.beginPath()
       ctx.arc(pt.x * canvas.width, pt.y * canvas.height, dotR, 0, Math.PI * 2)
@@ -119,8 +103,7 @@ export default function ScanPage() {
       ctx.lineWidth = 2
       ctx.stroke()
     })
-    ctx.restore()
-  }, [cameraFacing, syncCanvas])
+  }, [cameraFacing])
 
   // Detection loop
   const detect = useCallback(() => {
@@ -329,10 +312,15 @@ export default function ScanPage() {
                   onUserMedia={() => { setCameraReady(true); setCameraError(false) }}
                   onUserMediaError={() => setCameraError(true)}
                 />
+                {/* Canvas must use same transform as video */}
                 <canvas
                   ref={canvasRef}
                   className="absolute inset-0 w-full h-full"
-                  style={{ pointerEvents: 'none' }}
+                  style={{
+                    pointerEvents: 'none',
+                    objectFit: 'cover',
+                    transform: cameraFacing === 'user' ? 'scaleX(-1)' : 'none',
+                  }}
                 />
 
                 {/* Palm guide overlay */}

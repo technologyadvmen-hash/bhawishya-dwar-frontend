@@ -28,6 +28,7 @@ export default function ScanPage() {
 
   const [step, setStep] = useState('setup')
   const [handType, setHandType] = useState('right')
+  const [readingLang, setReadingLang] = useState('en')
   const [capturedImage, setCapturedImage] = useState(null)
   const [capturedBlob, setCapturedBlob] = useState(null)
   const [cameraFacing, setCameraFacing] = useState('environment') // back camera default for palm
@@ -194,7 +195,7 @@ export default function ScanPage() {
     if (!scanResult?.scan?._id) return
     setLoading(true)
     try {
-      const res = await aiService.generateReading({ scanId: scanResult.scan._id, reportType: 'general' })
+      const res = await aiService.generateReading({ scanId: scanResult.scan._id, reportType: 'general', language: readingLang })
       toast.success('Reading generated!')
       navigate(`/dashboard/reports/${res.data.report._id}`)
     } catch (err) {
@@ -449,12 +450,27 @@ export default function ScanPage() {
               })}
             </div>
 
+            {/* Language selector */}
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-xs font-semibold text-[#35243B]/60">Report Language:</span>
+              <div className="flex gap-2">
+                {[{ key: 'en', label: 'English' }, { key: 'hi', label: 'हिंदी' }].map(({ key, label }) => (
+                  <button key={key} onClick={() => setReadingLang(key)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                      readingLang === key ? 'btn-primary' : 'bg-white border border-[#EADFED] text-[#35243B]/70 hover:bg-[#F5EAF7]'
+                    }`}>
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <button onClick={generateReading} disabled={loading}
               className="btn-gold w-full py-4 text-base font-bold flex items-center justify-center gap-2 shadow-lg">
               {loading ? (
-                <><Loader size={17} className="animate-spin text-[#35243B]" /> Generating Reading...</>
+                <><Loader size={17} className="animate-spin text-[#35243B]" /> {readingLang === 'hi' ? 'रिपोर्ट बन रही है...' : 'Generating Reading...'}</>
               ) : (
-                <><Sparkles size={17} className="text-[#35243B]" /> Generate Full Reading</>
+                <><Sparkles size={17} className="text-[#35243B]" /> {readingLang === 'hi' ? 'पूरी रिपोर्ट बनाएं' : 'Generate Full Reading'}</>
               )}
             </button>
           </div>

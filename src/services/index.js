@@ -29,6 +29,8 @@ export const reportService = {
   getAll: (params) => api.get("/reports", { params }),
   getById: (id) => api.get(`/reports/${id}`),
   delete: (id) => api.delete(`/reports/${id}`),
+  download: (id, lang = "en") =>
+    api.get(`/reports/${id}/download`, { params: { lang }, responseType: "blob" }),
 };
 
 export const astrologyService = {

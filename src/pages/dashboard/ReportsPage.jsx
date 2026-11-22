@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FileText, Star, Clock, Trash2, Eye, Hand, Sparkles } from 'lucide-react'
+import { FileText, Star, Clock, Trash2, Eye, Hand, Download, Loader } from 'lucide-react'
 import { reportService } from '../../services'
 import toast from 'react-hot-toast'
 
@@ -27,6 +27,8 @@ export default function ReportsPage() {
     fetchReports()
   }, [filter])
 
+  const [downloadingId, setDownloadingId] = useState(null)
+
   const handleDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this report?')) return
     try {
@@ -35,6 +37,28 @@ export default function ReportsPage() {
       toast.success('Report deleted')
     } catch {
       toast.error('Failed to delete report')
+    }
+  }
+
+  const handleDownload = async (report) => {
+    setDownloadingId(report._id)
+    try {
+      const lang = report.language || 'en'
+      const res = await reportService.download(report._id, lang)
+      const blob = new Blob([res.data], { type: 'application/pdf' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `palm-report-${lang}-${Date.now()}.pdf`
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(url)
+      toast.success('PDF downloaded!')
+    } catch {
+      toast.error('Failed to download PDF')
+    } finally {
+      setDownloadingId(null)
     }
   }
 
@@ -148,13 +172,25 @@ export default function ReportsPage() {
 
               <div className="flex items-center gap-2">
                 {report.reportCategory === 'palm' && (
-                  <Link
-                    to={`/dashboard/reports/${report._id}`}
-                    className="p-2.5 rounded-xl bg-[#F5EAF7] text-[#641A78] hover:bg-[#641A78] hover:text-white transition-all shadow-sm"
-                    title="View Report"
-                  >
-                    <Eye size={16} />
-                  </Link>
+                  <>
+                    <Link
+                      to={`/dashboard/reports/${report._id}`}
+                      className="p-2.5 rounded-xl bg-[#F5EAF7] text-[#641A78] hover:bg-[#641A78] hover:text-white transition-all shadow-sm"
+                      title="View Report"
+                    >
+                      <Eye size={16} />
+                    </Link>
+                    <button
+                      onClick={() => handleDownload(report)}
+                      disabled={downloadingId === report._id}
+                      className="p-2.5 rounded-xl bg-[#FFF9F0] text-[#D9A441] hover:bg-[#D9A441] hover:text-white transition-all shadow-sm"
+                      title="Download PDF"
+                    >
+                      {downloadingId === report._id
+                        ? <Loader size={16} className="animate-spin" />
+                        : <Download size={16} />}
+                    </button>
+                  </>
                 )}
                 <button
                   onClick={() => handleDelete(report._id)}

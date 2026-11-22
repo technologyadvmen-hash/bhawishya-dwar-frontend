@@ -29,6 +29,7 @@ export default function ScanPage() {
   const [handType, setHandType] = useState('right')
   const [capturedImage, setCapturedImage] = useState(null)
   const [capturedBlob, setCapturedBlob] = useState(null)
+  const [cameraFacing, setCameraFacing] = useState('user')
   const [cameraError, setCameraError] = useState(false)
   const [loading, setLoading] = useState(false)
   const [scanResult, setScanResult] = useState(null)
@@ -281,8 +282,8 @@ export default function ScanPage() {
                   ref={webcamRef}
                   screenshotFormat="image/jpeg"
                   className="w-full h-full object-cover"
-                  mirrored={true}
-                  videoConstraints={{ facingMode: 'user' }}
+                  mirrored={cameraFacing === 'user'}
+                  videoConstraints={{ facingMode: cameraFacing }}
                   onUserMediaError={() => setCameraError(true)}
                 />
                 <canvas
@@ -290,6 +291,14 @@ export default function ScanPage() {
                   className="absolute inset-0 w-full h-full"
                   style={{ pointerEvents: 'none' }}
                 />
+                {/* Camera Switch Button */}
+                <button
+                  onClick={() => { setCameraFacing(f => f === 'user' ? 'environment' : 'user'); setCameraError(false) }}
+                  className="absolute bottom-3 right-3 z-10 bg-[#35243B]/80 backdrop-blur-md border border-white/20 text-white rounded-full px-3 py-1.5 text-xs font-semibold flex items-center gap-1.5 hover:bg-[#641A78]/80 transition-colors"
+                >
+                  <RefreshCw size={12} />
+                  {cameraFacing === 'user' ? 'Back Camera' : 'Front Camera'}
+                </button>
                 <div className="absolute top-4 left-0 right-0 flex justify-center px-4">
                   {!mpReady ? (
                     <span className="text-xs bg-[#35243B]/80 backdrop-blur-md text-white/80 px-3.5 py-1.5 rounded-full flex items-center gap-2 border border-white/10">

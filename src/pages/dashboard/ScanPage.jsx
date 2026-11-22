@@ -281,7 +281,8 @@ export default function ScanPage() {
                   ref={webcamRef}
                   screenshotFormat="image/jpeg"
                   className="w-full h-full object-cover"
-                  mirrored={false}
+                  mirrored={true}
+                  videoConstraints={{ facingMode: 'user' }}
                   onUserMediaError={() => setCameraError(true)}
                 />
                 <canvas

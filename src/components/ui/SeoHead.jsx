@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 const DOMAIN = "https://savitramfoundation.com/bhawishya-dwar";
-const LOGO = `https://savitramfoundation.com/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png`;
+const LOGO = `https://savitramfoundation.com/bhawishya-dwar/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png`;
 
 export default function SeoHead({
   title = "AI Palm Reading & Astrology Online | SAVITRAM Foundation Bhawishya Dwar",

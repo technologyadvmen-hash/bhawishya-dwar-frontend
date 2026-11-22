@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <img src="/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png" alt="SAVITRAM Foundation" className="w-10 h-10 object-contain" />
+              <img src="/bhawishya-dwar/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png" alt="SAVITRAM Foundation" className="w-10 h-10 object-contain" />
               <span className="text-xl font-bold text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
                 SAVITRAM Foundation
               </span>

@@ -540,7 +540,7 @@ export default function HomePage() {
                   }}
                 >
                   <img
-                    src="/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png"
+                    src="/bhawishya-dwar/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png"
                     alt="Bhawishya Dwar Palmistry & Astrology Logo"
                     className="w-32 h-32 sm:w-40 sm:h-40 object-contain float-anim drop-shadow-[0_4px_16px_rgba(100,26,120,0.18)]"
                   />
@@ -1064,7 +1064,7 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <img
-              src="/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png"
+              src="/bhawishya-dwar/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png"
               alt="Bhawishya Dwar Official Emblem"
               className="w-16 h-16 object-contain mx-auto mb-5 opacity-95 float-anim"
             />

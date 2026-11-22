@@ -4,6 +4,7 @@
   "framework": "vite",
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/bhawishya-dwar/(.*)", "dest": "/bhawishya-dwar/index.html" },
+    { "src": "/bhawishya-dwar", "dest": "/bhawishya-dwar/index.html" }
   ]
 }

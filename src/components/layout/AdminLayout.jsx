@@ -31,7 +31,7 @@ export default function AdminLayout() {
       <div className="p-5 border-b border-white/10">
         <Link to="/admin" className="flex items-center gap-3">
           <img
-            src="/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png"
+            src="/bhawishya-dwar/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png"
             alt="SAVITRAM Foundation"
             className="w-8 h-8 object-contain"
           />

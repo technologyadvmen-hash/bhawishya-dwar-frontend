@@ -1,20 +1,8 @@
 {
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
+  "framework": "vite",
   "rewrites": [
-    {
-      "source": "/bhawishya-dwar/assets/(.*)",
-      "destination": "/bhawishya-dwar/assets/$1"
-    },
-    {
-      "source": "/bhawishya-dwar/(.*\\.(js|css|png|jpg|jpeg|svg|ico|woff|woff2|ttf|json|txt|xml))",
-      "destination": "/bhawishya-dwar/$1"
-    },
-    {
-      "source": "/bhawishya-dwar/(.*)",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/bhawishya-dwar",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

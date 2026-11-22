@@ -15,10 +15,12 @@ api.interceptors.response.use(
   (res) => res,
   (error) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem("savitram_token");
-      localStorage.removeItem("savitram_user");
-      window.location.replace(window.location.origin + "/bhawishya-dwar/login");
-    }
+        localStorage.removeItem("savitram_token");
+        localStorage.removeItem("savitram_user");
+        if (!window.location.pathname.includes("/login")) {
+          window.location.replace(window.location.origin + "/bhawishya-dwar/login");
+        }
+      }
     return Promise.reject(error);
   }
 );

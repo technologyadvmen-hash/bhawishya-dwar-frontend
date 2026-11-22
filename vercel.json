@@ -3,21 +3,7 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "routes": [
-    {
-      "src": "/bhawishya-dwar/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/bhawishya-dwar/(.+\\.(png|jpg|jpeg|svg|ico|webp|woff|woff2|ttf|txt|xml|json))",
-      "dest": "/$1"
-    },
-    {
-      "src": "/bhawishya-dwar(.*)",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

@@ -35,7 +35,7 @@ export default function LoginPage() {
         style={{ background: "linear-gradient(160deg, #641A78, #35243B)" }}>
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: "radial-gradient(circle at 30% 50%, #D9A441 0%, transparent 60%)" }} />
-        <img src="/bhawishya-dwar/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png" alt="Bhawishya Dwar" className="w-32 h-32 object-contain mb-8 float-anim" />
+        <img src="/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png" alt="Bhawishya Dwar" className="w-32 h-32 object-contain mb-8 float-anim" />
         <h2 className="text-3xl font-bold text-white text-center mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
           Welcome Back
         </h2>
@@ -54,7 +54,7 @@ export default function LoginPage() {
           {/* Mobile Logo */}
           <div className="lg:hidden text-center mb-8">
             <Link to="/" className="inline-flex items-center gap-2.5">
-              <img src="/bhawishya-dwar/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png" alt="Bhawishya Dwar" className="w-10 h-10 object-contain" />
+              <img src="/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png" alt="Bhawishya Dwar" className="w-10 h-10 object-contain" />
               <span className="text-xl font-bold text-[#641A78]" style={{ fontFamily: "'Playfair Display', serif" }}>Bhawishya Dwar</span>
             </Link>
           </div>

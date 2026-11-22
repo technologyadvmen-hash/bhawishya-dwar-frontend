@@ -18,7 +18,7 @@ api.interceptors.response.use(
         localStorage.removeItem("savitram_token");
         localStorage.removeItem("savitram_user");
         if (!window.location.pathname.includes("/login")) {
-          window.location.replace(window.location.origin + "/bhawishya-dwar/login");
+          window.location.replace(window.location.origin + "/login");
         }
       }
     return Promise.reject(error);

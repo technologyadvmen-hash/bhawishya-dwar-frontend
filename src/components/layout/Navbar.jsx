@@ -44,7 +44,7 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:scale-105">
               <img
-                src="/bhawishya-dwar/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png"
+                src="/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png"
                 alt="Bhawishya Dwar"
                 className="w-10 h-10 object-contain"
                 onError={(e) => { e.target.style.display = 'none'; }}

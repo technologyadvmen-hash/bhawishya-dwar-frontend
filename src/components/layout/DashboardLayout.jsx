@@ -42,7 +42,7 @@ export default function DashboardLayout() {
       {/* Logo */}
       <div className="p-5 border-b border-[#EADFED]">
         <Link to="/" className="flex items-center gap-2.5">
-          <img src="/bhawishya-dwar/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png" alt="SAVITRAM Foundation" className="w-8 h-8 object-contain" />
+          <img src="/Mystical%20Zodiac%20Palm%20Wheel%20%20logo.png" alt="SAVITRAM Foundation" className="w-8 h-8 object-contain" />
           <span className="font-bold text-[#641A78]" style={{ fontFamily: "'Playfair Display', serif" }}>
             SAVITRAM Foundation
           </span>

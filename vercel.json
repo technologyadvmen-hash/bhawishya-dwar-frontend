@@ -16,9 +16,8 @@
       "dest": "/index.html"
     },
     {
-      "src": "/",
-      "dest": "/bhawishya-dwar",
-      "status": 301
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }

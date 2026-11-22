@@ -17,7 +17,7 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem("savitram_token");
       localStorage.removeItem("savitram_user");
-      window.location.href = "/login";
+      window.location.href = "/bhawishya-dwar/login";
     }
     return Promise.reject(error);
   }

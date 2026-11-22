@@ -17,7 +17,8 @@
     },
     {
       "src": "/",
-      "dest": "/index.html"
+      "dest": "/bhawishya-dwar",
+      "status": 301
     }
   ]
 }

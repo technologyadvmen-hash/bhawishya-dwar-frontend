@@ -34,6 +34,7 @@ export default function ScanPage() {
   const [loading, setLoading] = useState(false)
   const [scanResult, setScanResult] = useState(null)
   const [mpReady, setMpReady] = useState(false)
+  const [mpError, setMpError] = useState(false)
   const [handDetected, setHandDetected] = useState(false)
 
   // Initialize MediaPipe HandLandmarker
@@ -42,22 +43,36 @@ export default function ScanPage() {
     const init = async () => {
       try {
         const vision = await FilesetResolver.forVisionTasks(
-          'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/wasm'
+          'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.2.3/wasm'
         )
-        const landmarker = await HandLandmarker.createFromOptions(vision, {
-          baseOptions: {
-            modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task',
-            delegate: 'GPU',
-          },
-          runningMode: 'VIDEO',
-          numHands: 1,
-        })
+        let landmarker
+        try {
+          landmarker = await HandLandmarker.createFromOptions(vision, {
+            baseOptions: {
+              modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task',
+              delegate: 'GPU',
+            },
+            runningMode: 'VIDEO',
+            numHands: 1,
+          })
+        } catch {
+          // GPU failed, fallback to CPU
+          landmarker = await HandLandmarker.createFromOptions(vision, {
+            baseOptions: {
+              modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task',
+              delegate: 'CPU',
+            },
+            runningMode: 'VIDEO',
+            numHands: 1,
+          })
+        }
         if (!cancelled) {
           handLandmarkerRef.current = landmarker
           setMpReady(true)
         }
       } catch (err) {
         console.error('MediaPipe init failed:', err)
+        if (!cancelled) setMpError(true)
       }
     }
     init()
@@ -300,9 +315,13 @@ export default function ScanPage() {
                   {cameraFacing === 'user' ? 'Back Camera' : 'Front Camera'}
                 </button>
                 <div className="absolute top-4 left-0 right-0 flex justify-center px-4">
-                  {!mpReady ? (
+                  {!mpReady && !mpError ? (
                     <span className="text-xs bg-[#35243B]/80 backdrop-blur-md text-white/80 px-3.5 py-1.5 rounded-full flex items-center gap-2 border border-white/10">
                       <Loader size={12} className="animate-spin text-[#D9A441]" /> Initializing hand detector...
+                    </span>
+                  ) : mpError ? (
+                    <span className="text-xs bg-amber-950/80 backdrop-blur-md border border-amber-400/30 text-amber-300 px-3.5 py-1.5 rounded-full border border-white/10">
+                      ⚠ Hand detector unavailable — capture manually
                     </span>
                   ) : handDetected ? (
                     <span className="text-xs bg-emerald-950/80 backdrop-blur-md border border-emerald-400/30 text-emerald-300 px-3.5 py-1.5 rounded-full flex items-center gap-1.5 font-medium shadow-sm">
@@ -327,11 +346,11 @@ export default function ScanPage() {
             </button>
             <button
               onClick={capture}
-              disabled={!handDetected && mpReady}
+              disabled={!handDetected && mpReady && !mpError}
               className="btn-primary flex-1 py-3 flex items-center justify-center gap-2"
             >
               <Camera size={18} />
-              {mpReady && !handDetected ? 'Position Hand...' : 'Capture Palm'}
+              {mpReady && !handDetected && !mpError ? 'Position Hand...' : 'Capture Palm'}
             </button>
           </div>
           <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleFileUpload} />
